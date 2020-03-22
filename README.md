@@ -14,7 +14,7 @@ C++ is an object-oriented programming language and you might want to use objects
 
 ```C++
 template <typename InputIterator>
-void countHungryAnimals(InputIterator animalBegin, InputIterator animalEnd);
+int countHungryAnimals(InputIterator animalBegin, InputIterator animalEnd);
 ```
 
 With C++20 it can be done nicer using Ranges and Concepts, but still it requires templates and so the code can't be moved to a .cpp file, which causes drawbacks such as slow compilation.
@@ -24,7 +24,7 @@ Can we make it better? Yes, with ```poly_span``` aka polymorphic span:
 ```C++
 #include "span/poly_span.h"
 
-void countHungryAnimals(span::poly_span<const Animal> animals);
+int countHungryAnimals(span::poly_span<const Animal> animals);
 ```
 
 Similar to ```std::span``` and iterators it's flexible to how the objects are stored, plus it's very explicit and requires no templates. Now the function will take ```std::vector, std::array, gsl::span```, C array, iterators and pointers of types derived from ```Animal```. Cool, isn't?

@@ -8,7 +8,9 @@ enable_testing()
 
 add_library(poly_span INTERFACE)
 
-target_sources(poly_span INTERFACE ${CMAKE_SOURCE_DIR}/include/span/poly_span.h)
+target_sources(poly_span INTERFACE
+    ${CMAKE_SOURCE_DIR}/include/span/poly_span.h
+    ${CMAKE_SOURCE_DIR}/include/span/detail/poly_span_utils.h)
 
 target_include_directories(poly_span INTERFACE include)
 
